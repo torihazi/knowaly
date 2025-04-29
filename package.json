@@ -2,6 +2,12 @@
   "name": "knowaly",
   "version": "0.1.0",
   "private": true,
+  "description": "Knowaly",
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": "22.x",
+    "pnpm": "10.x"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
