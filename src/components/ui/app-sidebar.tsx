@@ -2,11 +2,11 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
+  // SidebarGroup,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  SidebarProvider,
+  // SidebarProvider,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import {
