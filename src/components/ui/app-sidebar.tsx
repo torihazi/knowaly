@@ -2,11 +2,9 @@ import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
-  // SidebarGroup,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
-  // SidebarProvider,
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 import {
@@ -20,15 +18,22 @@ import { Button } from "./button";
 import { signOut } from "@/lib/auth/auth";
 import { User } from "@supabase/supabase-js";
 import { UserAvatar } from "@/components/ui/user-avatar";
+import Link from "next/link";
 
 export function AppSidebar({ user }: { user: User | null }) {
   return (
     <Sidebar>
-      <SidebarHeader />
+      <SidebarHeader>
+        <SidebarMenuButton asChild>
+          <Link href="/home">Knowaly</Link>
+        </SidebarMenuButton>
+      </SidebarHeader>
+      {/* ContentもSuspenceで囲む。 */}
       <SidebarContent />
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
+            {/* Suspenceで囲む。 */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>
@@ -54,9 +59,6 @@ export function AppSidebar({ user }: { user: User | null }) {
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <span>Billing</span>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <span>Sign out</span>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

@@ -1,11 +1,9 @@
-// Sample data - in a real app, this would come from a database
-
-import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
-import { Book } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import Link from "next/link";
+import { Book } from "lucide-react";
 
-export default async function HomePage() {
+export default async function BoxesPage() {
   const supabase = await createClient();
   const { data: boxes } = await supabase.from("boxes").select("*");
   const hasBoxes = boxes?.length && boxes.length > 0;
