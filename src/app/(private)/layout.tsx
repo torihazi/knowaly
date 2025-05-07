@@ -1,7 +1,7 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import { createClient } from "@/lib/supabase/server";
-
+import { MainHeader } from "@/components/ui/main-header";
 export default async function MainLayout({
   children,
 }: {
@@ -16,8 +16,8 @@ export default async function MainLayout({
   return (
     <SidebarProvider>
       <AppSidebar user={user ?? null} />
-      <main>
-        <SidebarTrigger />
+      <main className="flex h-screen w-full flex-col">
+        <MainHeader />
         {children}
       </main>
     </SidebarProvider>
