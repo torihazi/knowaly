@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { BoxCreateForm, boxCreateSchema } from "@/schema/box-schema";
-import { z } from "zod";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Form,

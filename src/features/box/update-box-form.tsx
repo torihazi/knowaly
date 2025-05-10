@@ -1,9 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { BoxUpdateForm, boxUpdateSchema } from "@/schema/box-schema";
