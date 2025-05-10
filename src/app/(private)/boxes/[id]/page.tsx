@@ -1,10 +1,11 @@
-import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
 import { Book } from "lucide-react";
+import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import { DeleteButton } from "@/components/custom/delete-button";
+import { Card, CardContent } from "@/components/ui/card";
 import { UpdateBoxForm } from "@/features/box/update-box-form";
-import { DeleteButton } from "@/components/ui/delete-button";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function BoxShowPage({
   params,

@@ -1,9 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Trash } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+
+import { Button } from "@/components/ui/button";
+import { createClient } from "@/lib/supabase/client";
 
 interface DeleteButtonProps {
   id: string;

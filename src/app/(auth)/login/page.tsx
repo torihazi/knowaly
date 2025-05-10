@@ -1,6 +1,6 @@
 import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   Card,
   CardContent,
@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import LoginGithub from "@/features/auth/login-github";
 
 export default function LoginPage() {

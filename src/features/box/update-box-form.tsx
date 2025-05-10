@@ -1,10 +1,9 @@
 "use client";
 
-import { createClient } from "@/lib/supabase/client";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { BoxUpdateForm, boxUpdateSchema } from "@/schema/box-schema";
+
 import {
   Form,
   FormControl,
@@ -14,7 +13,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { createClient } from "@/lib/supabase/client";
 import { handleEnterKeyDown } from "@/lib/utils";
+import { BoxUpdateForm, boxUpdateSchema } from "@/schema/box-schema";
 
 type UpdateBoxFormProps = {
   boxId: string;

@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import { useTransition } from "react";
+
 import { Button } from "@/components/ui/button";
 import { signInWithGithub } from "@/lib/auth/auth";
-import { useTransition } from "react";
-import Image from "next/image";
 
 const LoginGithub = () => {
   const [isPending, startTransition] = useTransition();

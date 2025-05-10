@@ -1,7 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent } from "@/components/ui/card";
-import Link from "next/link";
 import { Book } from "lucide-react";
+import Link from "next/link";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function BoxesPage() {
   const supabase = await createClient();
