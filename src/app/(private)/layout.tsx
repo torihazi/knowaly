@@ -1,8 +1,8 @@
+import { AppSidebar } from "@/components/custom/app-sidebar";
 import { MainHeader } from "@/components/custom/main-header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase/server";
 
-import { AppSidebar } from "@/components/ui/app-sidebar";
 export default async function MainLayout({
   children,
 }: {
