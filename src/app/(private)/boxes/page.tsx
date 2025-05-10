@@ -10,7 +10,7 @@ export default async function BoxesPage() {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-6">
+      <div className="flex flex-col items-start mt-6">
         {!hasBoxes ? (
           <Card className="w-[80%] rounded-xl border border-gray-200 bg-gray-50 shadow-sm">
             <CardContent className="flex flex-col items-center justify-center p-12 text-center">
@@ -18,26 +18,27 @@ export default async function BoxesPage() {
                 <Book className="h-8 w-8 text-[#7FB3D5]" />
               </div>
               <p className="text-lg text-gray-600">
-                まだ箱がありません。
-                <br /> 箱を作成して、知識を整理しましょう。
+                No boxes found.
+                <br /> Create a box and organize your knowledge.
               </p>
               <Link
                 className="mt-6 bg-[#7FB3D5] hover:bg-[#7FB3D5]/90 text-white cursor-pointer rounded-md px-4 py-2"
                 href="/boxes/new"
               >
-                箱を作成する
+                Create a box
               </Link>
             </CardContent>
           </Card>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {boxes.map((box) => (
               <Link key={box.id} href={`/boxes/${box.id}`} className="block">
                 <Card className="h-full rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow focus:opacity-90 focus:shadow">
                   <CardContent className="p-6">
                     <h2 className="mb-2 text-lg font-bold">{box.title}</h2>
                     <p className="text-sm text-gray-500">
-                      Last updated: {box.updatedAt.toLocaleDateString()}
+                      Last updated:{" "}
+                      {new Date(box.updated_at).toLocaleDateString()}
                     </p>
                   </CardContent>
                 </Card>

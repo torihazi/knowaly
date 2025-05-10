@@ -18,7 +18,9 @@ export default async function MainLayout({
       <AppSidebar user={user ?? null} />
       <main className="flex h-screen w-full flex-col">
         <MainHeader />
-        {children}
+        <div className="flex-1 bg-gray-50 dark:bg-gray-900 overflow-y-auto p-4 md:p-6 lg:p-8">
+          {children}
+        </div>
       </main>
     </SidebarProvider>
   );

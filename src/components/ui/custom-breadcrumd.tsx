@@ -2,10 +2,11 @@ import {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import Link from "next/link";
 import React from "react";
+
 export function CustomBreadcrumb({ pathParts }: { pathParts: string[] }) {
   return (
     <Breadcrumb>
@@ -14,7 +15,7 @@ export function CustomBreadcrumb({ pathParts }: { pathParts: string[] }) {
           return (
             <React.Fragment key={part}>
               <BreadcrumbItem>
-                <BreadcrumbLink href={`/${part}`}>{part}</BreadcrumbLink>
+                <Link href={`/${part}`}>{part}</Link>
               </BreadcrumbItem>
               {index !== pathParts.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>
