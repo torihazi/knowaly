@@ -44,14 +44,14 @@ export default async function BoxShowPage({
                 <Book className="h-8 w-8 text-[#7FB3D5]" />
               </div>
               <p className="text-lg text-gray-600">
-                No boxes found.
-                <br /> Create a box and organize your knowledge.
+                No knowledges found.
+                <br /> Create a knowledge and organize your knowledge.
               </p>
               <Link
                 className="mt-6 bg-[#7FB3D5] hover:bg-[#7FB3D5]/90 text-white cursor-pointer rounded-md px-4 py-2"
                 href="/boxes/new"
               >
-                Create a box
+                Create a knowledge
               </Link>
             </CardContent>
           </Card>
