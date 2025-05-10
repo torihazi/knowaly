@@ -10,7 +10,7 @@ export default async function BoxesPage() {
 
   return (
     <>
-      <div className="flex flex-col items-center mt-6">
+      <div className="flex flex-col items-start mt-6">
         {!hasBoxes ? (
           <Card className="w-[80%] rounded-xl border border-gray-200 bg-gray-50 shadow-sm">
             <CardContent className="flex flex-col items-center justify-center p-12 text-center">
@@ -30,7 +30,7 @@ export default async function BoxesPage() {
             </CardContent>
           </Card>
         ) : (
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
             {boxes.map((box) => (
               <Link key={box.id} href={`/boxes/${box.id}`} className="block">
                 <Card className="h-full rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow focus:opacity-90 focus:shadow">
