@@ -1,11 +1,12 @@
+import Link from "next/link";
+import React from "react";
+
 import {
   Breadcrumb,
   BreadcrumbList,
   BreadcrumbItem,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import Link from "next/link";
-import React from "react";
 
 export function CustomBreadcrumb({ pathParts }: { pathParts: string[] }) {
   return (

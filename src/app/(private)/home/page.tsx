@@ -1,9 +1,10 @@
 // Sample data - in a real app, this would come from a database
 
-import { Card, CardContent } from "@/components/ui/card";
-import { createClient } from "@/lib/supabase/server";
 import { Book } from "lucide-react";
 import Link from "next/link";
+
+import { Card, CardContent } from "@/components/ui/card";
+import { createClient } from "@/lib/supabase/server";
 
 export default async function HomePage() {
   const supabase = await createClient();

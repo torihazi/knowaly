@@ -1,6 +1,7 @@
+import { ArrowRight, Search, Shield, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Search, Shield, Sparkles } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 
 export default function LandingPage() {

@@ -1,8 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+
+import { CustomBreadcrumb } from "@/components/custom/custom-breadcrumd";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { CustomBreadcrumb } from "./custom-breadcrumd";
 
 export function MainHeader() {
   const pathname = usePathname();

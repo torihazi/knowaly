@@ -1,3 +1,17 @@
+import { User } from "@supabase/supabase-js";
+import { ChevronUp } from "lucide-react";
+import { Plus } from "lucide-react";
+import Link from "next/link";
+import { Suspense } from "react";
+
+import { UserAvatar } from "@/components/custom/user-avatar";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   Sidebar,
   SidebarContent,
@@ -13,20 +27,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronUp } from "lucide-react";
-import { Button } from "./button";
 import { signOut } from "@/lib/auth/auth";
-import { User } from "@supabase/supabase-js";
-import { UserAvatar } from "@/components/ui/user-avatar";
-import Link from "next/link";
-import { Suspense } from "react";
-import { Plus } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
 
 export async function AppSidebar({ user }: { user: User | null }) {
