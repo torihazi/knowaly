@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
   ssr: false,
