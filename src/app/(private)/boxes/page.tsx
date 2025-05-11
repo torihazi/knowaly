@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import { createClient } from "@/lib/supabase/server";
 
-export default async function BoxesPage() {
+export default async function IndexBoxPage() {
   const supabase = await createClient();
   const { data: boxes } = await supabase.from("boxes").select("*");
   const hasBoxes = boxes?.length && boxes.length > 0;

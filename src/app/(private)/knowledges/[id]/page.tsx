@@ -1,11 +1,14 @@
-import { Book } from "lucide-react";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
 import { Card, CardContent } from "@/components/ui/card";
 import { getKnowledgeWithBox } from "@/lib/knowledges/actions";
+import { MarkdownEditor } from "@/features/knowledge/markdown-editor";
+import { MarkdownView } from "@/features/knowledge/markdown-view";
+import { marked } from "marked";
+import { EditButton } from "@/components/custom/edit-button";
+import { DeleteButton } from "@/components/custom/delete-button";
 
-export default async function KnowledgeShowPage({
+export default async function ShowKnowledgePage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -18,26 +21,21 @@ export default async function KnowledgeShowPage({
   }
 
   return (
-    <>
-      <div className="flex flex-col items-start mt-6">
-        <Card className="w-[80%] rounded-xl border border-gray-200 bg-gray-50 shadow-sm">
-          <CardContent className="flex flex-col items-center justify-center p-12 text-center">
-            <div className="mb-4 rounded-full bg-gray-100 p-4">
-              <Book className="h-8 w-8 text-[#7FB3D5]" />
-            </div>
-            <p className="text-lg text-gray-600">
-              No knowledges found.
-              <br /> Create a knowledge and organize your knowledge.
-            </p>
-            <Link
-              className="mt-6 bg-[#7FB3D5] hover:bg-[#7FB3D5]/90 text-white cursor-pointer rounded-md px-4 py-2"
-              href="/boxes/new"
-            >
-              Create a knowledge
-            </Link>
-          </CardContent>
-        </Card>
+    <div className="flex flex-col items-start mt-6">
+      <div className="flex justify-between w-full">
+        <div className="flex gap-2">{knowledge.title}</div>
+        <div className="flex gap-2">
+          <EditButton redirectPath={`/knowledges/${id}/edit`} />
+          <DeleteButton
+            id={id}
+            redirectPath={`/boxes/${knowledge.box_id}`}
+            type="knowledges"
+          />
+        </div>
       </div>
-    </>
+      <div>
+        <MarkdownView content={knowledge.content} />
+      </div>
+    </div>
   );
 }
