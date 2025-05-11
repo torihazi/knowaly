@@ -66,9 +66,12 @@ export async function AppSidebar({ user }: { user: User | null }) {
                   </SidebarMenuButton>
                   <SidebarMenuSub>
                     {box.knowledges?.map((knowledge) => (
-                      <SidebarMenuSubItem key={knowledge.id}>
+                      <SidebarMenuSubItem
+                        key={knowledge.id}
+                        className="hover:bg-gray-100 dark:hover:bg-gray-800 p-1"
+                      >
                         <Link
-                          href={`/boxes/${box.id}/knowledges/${knowledge.id}`}
+                          href={`/knowledges/${knowledge.id}`}
                           className="inline-block w-full"
                         >
                           {knowledge.title}
