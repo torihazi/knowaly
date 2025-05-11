@@ -1,9 +1,11 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import SimpleMDE from "react-simplemde-editor";
+
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,15 +14,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { handleEnterKeyDown } from "@/lib/utils";
 import {
   KnowledgeUpdateForm,
   knowledgeUpdateSchema,
 } from "@/schema/knowledge-schema";
+
 import { MarkdownEditor } from "./markdown-editor";
-import { useRouter } from "next/navigation";
 type UpdateKnowledgeFormProps = {
   knowledgeId: string;
   initialTitle: string;

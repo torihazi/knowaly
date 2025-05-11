@@ -1,12 +1,9 @@
 import { redirect } from "next/navigation";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { getKnowledgeWithBox } from "@/lib/knowledges/actions";
-import { MarkdownEditor } from "@/features/knowledge/markdown-editor";
-import { MarkdownView } from "@/features/knowledge/markdown-view";
-import { marked } from "marked";
-import { EditButton } from "@/components/custom/edit-button";
 import { DeleteButton } from "@/components/custom/delete-button";
+import { EditButton } from "@/components/custom/edit-button";
+import { MarkdownView } from "@/features/knowledge/markdown-view";
+import { getKnowledgeWithBox } from "@/lib/knowledges/actions";
 
 export default async function ShowKnowledgePage({
   params,
