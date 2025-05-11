@@ -1,7 +1,13 @@
 "use client";
 
-import SimpleMDE from "react-simplemde-editor";
+import dynamic from "next/dynamic";
 import "easymde/dist/easymde.min.css";
+import { useMemo } from "react";
+
+const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
+  ssr: false,
+});
+
 export const MarkdownEditor = ({
   value,
   onChange,
@@ -9,5 +15,13 @@ export const MarkdownEditor = ({
   value: string;
   onChange: (value: string) => void;
 }) => {
-  return <SimpleMDE value={value} onChange={onChange} />;
+  const options = useMemo(
+    () => ({
+      autofocus: true, // フォーカスしたら自動で編集モードになる
+      spellChecker: false, // スペルチェックを無効化
+    }),
+    []
+  );
+
+  return <SimpleMDE value={value} onChange={onChange} options={options} />;
 };
