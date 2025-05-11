@@ -62,7 +62,7 @@ export default async function BoxShowPage({
               {boxWithKnowledges.knowledges.map((knowledge) => (
                 <Link
                   key={knowledge.id}
-                  href={`/boxes/${id}/knowledges/${knowledge.id}`}
+                  href={`/knowledges/${knowledge.id}`}
                   className="block"
                 >
                   <Card className="h-full rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow focus:opacity-90 focus:shadow">
