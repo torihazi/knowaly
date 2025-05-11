@@ -24,7 +24,12 @@ export const DeleteButton = ({ id, redirectPath, type }: DeleteButtonProps) => {
   };
 
   return (
-    <Button variant="outline" size="icon" onClick={handleDelete}>
+    <Button
+      variant="outline"
+      size="icon"
+      onClick={handleDelete}
+      className="cursor-pointer"
+    >
       <Trash className="h-4 w-4 text-red-500" />
     </Button>
   );

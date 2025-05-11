@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { UpdateBoxForm } from "@/features/box/update-box-form";
 import { createClient } from "@/lib/supabase/server";
 
-export default async function BoxShowPage({
+export default async function ShowBoxPage({
   params,
 }: {
   params: Promise<{ id: string }>;
@@ -50,7 +50,7 @@ export default async function BoxShowPage({
               </p>
               <Link
                 className="mt-6 bg-[#7FB3D5] hover:bg-[#7FB3D5]/90 text-white cursor-pointer rounded-md px-4 py-2"
-                href="/boxes/new"
+                href={`/boxes/${id}/new`}
               >
                 Create a knowledge
               </Link>
@@ -62,7 +62,7 @@ export default async function BoxShowPage({
               {boxWithKnowledges.knowledges.map((knowledge) => (
                 <Link
                   key={knowledge.id}
-                  href={`/boxes/${id}/knowledges/${knowledge.id}`}
+                  href={`/knowledges/${knowledge.id}`}
                   className="block"
                 >
                   <Card className="h-full rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-200 hover:opacity-90 hover:shadow focus:opacity-90 focus:shadow">
