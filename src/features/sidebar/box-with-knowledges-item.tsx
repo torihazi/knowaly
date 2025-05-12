@@ -1,11 +1,12 @@
-import { createClient } from "@/lib/supabase/server";
+import Link from "next/link";
+
 import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
+import { createClient } from "@/lib/supabase/server";
 
 export const BoxWithKnowledgesItem = async () => {
   const supabase = await createClient();

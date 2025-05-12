@@ -1,15 +1,16 @@
+import { ChevronUp } from "lucide-react";
+
+import { UserAvatar } from "@/components/custom/user-avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "@/components/ui/button";
-import { ChevronUp } from "lucide-react";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-import { UserAvatar } from "@/components/custom/user-avatar";
-import { createClient } from "@/lib/supabase/server";
 import { signOut } from "@/lib/auth/auth";
+import { createClient } from "@/lib/supabase/server";
 
 export const UserInfoItem = async () => {
   const supabase = await createClient();

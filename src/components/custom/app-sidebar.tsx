@@ -2,22 +2,21 @@ import { Plus } from "lucide-react";
 import Link from "next/link";
 import { Suspense } from "react";
 
+import { SidebarSkelton } from "@/components/custom/sidebar-skelton";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarMenu,
-  SidebarMenuItem,
   SidebarMenuButton,
   SidebarGroup,
   SidebarGroupLabel,
   SidebarGroupAction,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { UserInfoItem } from "@/features/sidebar/user-info-item";
 import { BoxWithKnowledgesItem } from "@/features/sidebar/box-with-knowledges-item";
-import { SidebarSkelton } from "@/components/custom/sidebar-skelton";
+import { UserInfoItem } from "@/features/sidebar/user-info-item";
 
 export function AppSidebar() {
   return (
