@@ -1,0 +1,1 @@
+alter table items alter column content set not null;
