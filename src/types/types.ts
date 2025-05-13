@@ -69,41 +69,6 @@ export type Database = {
           },
         ];
       };
-      knowledges: {
-        Row: {
-          box_id: string | null;
-          content: string;
-          created_at: string;
-          id: string;
-          title: string;
-          updated_at: string;
-        };
-        Insert: {
-          box_id?: string | null;
-          content: string;
-          created_at?: string;
-          id?: string;
-          title: string;
-          updated_at?: string;
-        };
-        Update: {
-          box_id?: string | null;
-          content?: string;
-          created_at?: string;
-          id?: string;
-          title?: string;
-          updated_at?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "knowledges_box_id_fkey";
-            columns: ["box_id"];
-            isOneToOne: false;
-            referencedRelation: "boxes";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
       users: {
         Row: {
           avatar_url: string | null;

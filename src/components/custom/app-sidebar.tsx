@@ -15,7 +15,7 @@ import {
   SidebarGroupAction,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { BoxWithKnowledgesItem } from "@/features/sidebar/box-with-knowledges-item";
+import { BoxesItem } from "@/features/sidebar/box-with-knowledges-item";
 import { UserInfoItem } from "@/features/sidebar/user-info-item";
 
 export function AppSidebar() {
@@ -40,7 +40,7 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <Suspense fallback={<SidebarSkelton length={4} />}>
-                <BoxWithKnowledgesItem />
+                <BoxesItem />
               </Suspense>
             </SidebarMenu>
           </SidebarGroupContent>
