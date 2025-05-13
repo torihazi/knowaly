@@ -8,34 +8,17 @@ import {
 } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase/server";
 
-export const BoxWithKnowledgesItem = async () => {
+export const BoxesItem = async () => {
   const supabase = await createClient();
-  const { data: boxesWithKnowledges } = await supabase
-    .from("boxes")
-    .select("*, knowledges(*)")
-    .order("created_at", { ascending: false });
+  const { data: boxes } = await supabase.from("boxes").select("*");
+
   return (
     <>
-      {boxesWithKnowledges?.map((box) => (
+      {boxes?.map((box) => (
         <SidebarMenuItem key={box.id}>
           <SidebarMenuButton asChild>
             <Link href={`/boxes/${box.id}`}>{box.title}</Link>
           </SidebarMenuButton>
-          <SidebarMenuSub>
-            {box.knowledges?.map((knowledge) => (
-              <SidebarMenuSubItem
-                key={knowledge.id}
-                className="hover:bg-gray-100 dark:hover:bg-gray-800 p-1"
-              >
-                <Link
-                  href={`/knowledges/${knowledge.id}`}
-                  className="inline-block w-full"
-                >
-                  {knowledge.title}
-                </Link>
-              </SidebarMenuSubItem>
-            ))}
-          </SidebarMenuSub>
         </SidebarMenuItem>
       ))}
     </>

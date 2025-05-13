@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/client";
 interface DeleteButtonProps {
   id: string;
   redirectPath: string;
-  type: "boxes" | "knowledges";
+  type: "boxes";
 }
 
 export const DeleteButton = ({ id, redirectPath, type }: DeleteButtonProps) => {
