@@ -15,8 +15,8 @@ import {
   SidebarGroupAction,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { UserInfoItem } from "@/features/sidebar/user-info-item";
 import { BoxesItem } from "@/features/sidebar/box-with-knowledges-item";
+import { UserInfoItem } from "@/features/sidebar/user-info-item";
 
 export function AppSidebar() {
   return (

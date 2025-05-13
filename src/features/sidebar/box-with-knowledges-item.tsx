@@ -1,11 +1,6 @@
 import Link from "next/link";
 
-import {
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarMenuSub,
-  SidebarMenuSubItem,
-} from "@/components/ui/sidebar";
+import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase/server";
 
 export const BoxesItem = async () => {
