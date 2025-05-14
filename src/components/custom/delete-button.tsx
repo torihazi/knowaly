@@ -9,16 +9,15 @@ import { createClient } from "@/lib/supabase/client";
 interface DeleteButtonProps {
   id: string;
   redirectPath: string;
-  type: "boxes";
 }
 
-export const DeleteButton = ({ id, redirectPath, type }: DeleteButtonProps) => {
+export const DeleteButton = ({ id, redirectPath }: DeleteButtonProps) => {
   const router = useRouter();
 
   const handleDelete = async () => {
     if (confirm("you sure?")) {
       const supabase = createClient();
-      await supabase.from(type).delete().eq("id", id);
+      await supabase.from("items").delete().eq("id", id);
       router.push(redirectPath);
     }
   };
