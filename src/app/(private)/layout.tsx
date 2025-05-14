@@ -1,5 +1,4 @@
 import { AppSidebar } from "@/components/custom/app-sidebar";
-import { MainHeader } from "@/components/custom/main-header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function MainLayout({
