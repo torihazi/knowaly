@@ -15,7 +15,7 @@ import {
   SidebarGroupAction,
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
-import { BoxesItem } from "@/features/sidebar/box-with-knowledges-item";
+import { ItemsList } from "@/features/sidebar/items-list";
 import { UserInfoItem } from "@/features/sidebar/user-info-item";
 
 export function AppSidebar() {
@@ -31,16 +31,16 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Items</SidebarGroupLabel>
           <SidebarGroupAction asChild>
-            <Link href="/boxes/new">
-              <Plus /> <span className="sr-only">Add Project</span>
+            <Link href="/items/new">
+              <Plus /> <span className="sr-only">Add Item</span>
             </Link>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
               <Suspense fallback={<SidebarSkelton length={4} />}>
-                <BoxesItem />
+                <ItemsList />
               </Suspense>
             </SidebarMenu>
           </SidebarGroupContent>

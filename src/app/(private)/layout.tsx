@@ -1,5 +1,4 @@
 import { AppSidebar } from "@/components/custom/app-sidebar";
-import { MainHeader } from "@/components/custom/main-header";
 import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function MainLayout({
@@ -11,7 +10,7 @@ export default function MainLayout({
     <SidebarProvider>
       <AppSidebar />
       <main className="flex h-screen w-full flex-col">
-        <MainHeader />
+        {/* <MainHeader /> */}
         <div className="flex-1 bg-gray-50 dark:bg-gray-900 overflow-y-auto p-4 md:p-6 lg:p-8">
           {children}
         </div>
