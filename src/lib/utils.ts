@@ -29,3 +29,8 @@ export const parseMarkdown = async (markdown: string) => {
 
   return String(result.value);
 };
+
+// 配列を受け取り、指定された要素数分の要素を"/"で結合してその文字列を返す
+export const joinPathParts = (pathParts: string[], index: number) => {
+  return pathParts.slice(0, index).join("/");
+};

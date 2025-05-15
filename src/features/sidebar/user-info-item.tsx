@@ -9,14 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar";
-import { signOut } from "@/lib/auth/auth";
-import { createClient } from "@/lib/supabase/server";
+import { getUser, signOut } from "@/lib/auth/auth";
 
 export const UserInfoItem = async () => {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const user = await getUser();
+
   return (
     <SidebarMenuItem>
       <DropdownMenu>

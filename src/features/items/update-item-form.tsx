@@ -14,11 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
+import { updateItem } from "@/lib/items/actions";
 import { itemUpdateSchema } from "@/schema/item-schema";
 import { ItemUpdateForm } from "@/schema/item-schema";
 
 import { MarkdownEditor } from "./markdown-editor";
+
 type UpdateItemFormProps = {
   itemId: string;
   initialTitle: string;
@@ -39,16 +40,9 @@ export const UpdateItemForm = ({
     },
   });
 
-  const updateItem = async (data: ItemUpdateForm) => {
+  const onSubmit = async (data: ItemUpdateForm) => {
     try {
-      const supabase = createClient();
-      await supabase
-        .from("items")
-        .update({
-          title: data.title,
-          content: data.content || "",
-        })
-        .eq("id", itemId);
+      await updateItem(data, itemId);
       toast.success("Updated successfully");
       router.push(`/items/${itemId}`);
     } catch (error) {
@@ -60,7 +54,7 @@ export const UpdateItemForm = ({
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(updateItem)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col w-full"
       >
         <div className="flex gap-4">
