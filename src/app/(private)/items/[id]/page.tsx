@@ -26,7 +26,7 @@ export default async function ShowItemPage({
         <div className="flex gap-2">{item.title}</div>
         <div className="flex gap-2">
           <EditButton redirectPath={`/items/${id}/edit`} />
-          <DeleteButton id={id} redirectPath={`/items/${item.id}`} />
+          <DeleteButton id={id} redirectPath={`/items`} />
         </div>
       </div>
       <div>
