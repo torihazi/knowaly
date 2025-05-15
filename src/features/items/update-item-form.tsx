@@ -14,12 +14,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
+import { updateItem } from "@/lib/items/actions";
 import { itemUpdateSchema } from "@/schema/item-schema";
 import { ItemUpdateForm } from "@/schema/item-schema";
 
 import { MarkdownEditor } from "./markdown-editor";
-import { updateItem } from "@/lib/items/actions";
+
 type UpdateItemFormProps = {
   itemId: string;
   initialTitle: string;

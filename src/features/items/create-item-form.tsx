@@ -14,11 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { createClient } from "@/lib/supabase/client";
+import { createItem } from "@/lib/items/actions";
 import { ItemCreateForm, itemCreateSchema } from "@/schema/item-schema";
 
 import { MarkdownEditor } from "./markdown-editor";
-import { createItem } from "@/lib/items/actions";
 
 export const CreateItemForm = () => {
   const router = useRouter();
