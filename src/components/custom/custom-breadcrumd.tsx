@@ -7,6 +7,7 @@ import {
   BreadcrumbItem,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { joinPathParts } from "@/lib/utils";
 
 export function CustomBreadcrumb({ pathParts }: { pathParts: string[] }) {
   return (
@@ -16,7 +17,7 @@ export function CustomBreadcrumb({ pathParts }: { pathParts: string[] }) {
           return (
             <React.Fragment key={part}>
               <BreadcrumbItem>
-                <Link href={`/${part}`}>{part}</Link>
+                <Link href={joinPathParts(pathParts, index)}>{part}</Link>
               </BreadcrumbItem>
               {index !== pathParts.length - 1 && <BreadcrumbSeparator />}
             </React.Fragment>

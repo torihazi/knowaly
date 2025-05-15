@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { ItemCreateForm, ItemUpdateForm } from "@/schema/item-schema";
+import { getUser } from "../auth/auth";
 
 export const getItems = async () => {
   const supabase = await createClient();
@@ -35,14 +36,11 @@ export const getItem = async (id: string) => {
 export const createItem = async (item: ItemCreateForm) => {
   try {
     const supabase = await createClient();
-    const { data: user, error: userError } = await supabase.auth.getUser();
-    if (userError) {
-      throw userError;
-    }
+    const user = await getUser();
     const { data: newItem, error } = await supabase
       .from("items")
       .insert({
-        user_id: user.user.id,
+        user_id: user?.id,
         title: item.title,
         content: item.content || "",
       })
