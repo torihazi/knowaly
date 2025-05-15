@@ -18,6 +18,7 @@ import { createClient } from "@/lib/supabase/client";
 import { ItemCreateForm, itemCreateSchema } from "@/schema/item-schema";
 
 import { MarkdownEditor } from "./markdown-editor";
+import { createItem } from "@/lib/items/actions";
 
 export const CreateItemForm = () => {
   const router = useRouter();
@@ -29,26 +30,9 @@ export const CreateItemForm = () => {
     },
   });
 
-  const createItem = async (data: ItemCreateForm) => {
+  const onSubmit = async (data: ItemCreateForm) => {
     try {
-      const supabase = createClient();
-      const { data: user, error: userError } = await supabase.auth.getUser();
-      if (userError) {
-        throw userError;
-      }
-      const { data: item, error } = await supabase
-        .from("items")
-        .insert({
-          user_id: user.user.id,
-          title: data.title,
-          content: data.content || "",
-        })
-        .select()
-        .single();
-
-      if (error) {
-        throw error;
-      }
+      const item = await createItem(data);
       toast.success("Successfully created item");
       router.push(`/items/${item.id}`);
     } catch (error) {
@@ -60,7 +44,7 @@ export const CreateItemForm = () => {
   return (
     <Form {...form}>
       <form
-        onSubmit={form.handleSubmit(createItem)}
+        onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col w-full"
       >
         <div className="flex gap-4">

@@ -4,7 +4,7 @@ import { Trash } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { createClient } from "@/lib/supabase/client";
+import { deleteItem } from "@/lib/items/actions";
 
 interface DeleteButtonProps {
   id: string;
@@ -16,8 +16,7 @@ export const DeleteButton = ({ id, redirectPath }: DeleteButtonProps) => {
 
   const handleDelete = async () => {
     if (confirm("you sure?")) {
-      const supabase = createClient();
-      await supabase.from("items").delete().eq("id", id);
+      await deleteItem(id);
       router.push(redirectPath);
     }
   };
