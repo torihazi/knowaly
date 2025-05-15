@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 
-import { getItem } from "@/lib/items/actions";
 import { UpdateItemForm } from "@/features/items/update-item-form";
+import { getItem } from "@/lib/items/actions";
 
 export default async function EditItemPage({
   params,
