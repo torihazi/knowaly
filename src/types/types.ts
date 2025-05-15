@@ -61,7 +61,7 @@ export type Database = {
         };
         Relationships: [
           {
-            foreignKeyName: "boxes_user_id_fkey";
+            foreignKeyName: "items_user_id_fkey";
             columns: ["user_id"];
             isOneToOne: false;
             referencedRelation: "users";

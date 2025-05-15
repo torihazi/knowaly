@@ -1,5 +1,9 @@
 import { clsx, type ClassValue } from "clsx";
+import rehypeStringify from "rehype-stringify";
+import remarkParse from "remark-parse";
+import remarkRehype from "remark-rehype";
 import { twMerge } from "tailwind-merge";
+import { unified } from "unified";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -13,4 +17,15 @@ export const handleEnterKeyDown = (
     e.preventDefault();
     callback();
   }
+};
+
+export const parseMarkdown = async (markdown: string) => {
+  const processor = unified()
+    .use(remarkParse)
+    .use(remarkRehype, { allowDangerousHtml: true })
+    .use(rehypeStringify);
+
+  const result = await processor.process(markdown);
+
+  return String(result.value);
 };
