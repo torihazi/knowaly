@@ -7,5 +7,10 @@ export const getItem = async (id: string) => {
     .select("*")
     .eq("id", id)
     .single();
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
   return data;
 };
