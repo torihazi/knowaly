@@ -1,6 +1,6 @@
 import { AppSidebar } from "@/components/custom/app-sidebar";
+import { CommandPallette } from "@/components/custom/command-pallette";
 import { SidebarProvider } from "@/components/ui/sidebar";
-
 export default function MainLayout({
   children,
 }: {
@@ -8,6 +8,7 @@ export default function MainLayout({
 }) {
   return (
     <SidebarProvider>
+      <CommandPallette />
       <AppSidebar />
       <main className="flex h-screen w-full flex-col">
         {/* <MainHeader /> */}
