@@ -1,15 +1,9 @@
 "use client";
 
-import {
-  Calculator,
-  Calendar,
-  CreditCard,
-  Home,
-  Plus,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
+import { Home, Plus, User } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useCallback, useState } from "react";
+import { useHotkeys } from "react-hotkeys-hook";
 
 import {
   CommandDialog,
@@ -21,9 +15,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
-import { useRouter } from "next/navigation";
-import { useHotkeys } from "react-hotkeys-hook";
-import { useCallback, useState } from "react";
 export function CommandPallette() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
