@@ -17,17 +17,16 @@ import {
 } from "@/components/ui/command";
 import { useSearchItems } from "@/features/items/hooks/swr";
 import { Item } from "@/lib/items/types";
+import useDebounce from "@/hooks/use-debounce";
 
 export function CommandPallette() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const { data, isLoading } = useSearchItems({
+  const debouncedQuery = useDebounce(query, 1000);
+  const { data } = useSearchItems({
     open,
-    query,
-    config: {
-      keepPreviousData: true,
-    },
+    query: debouncedQuery as string,
   });
 
   useHotkeys(["meta+h", "ctrl+h"], () => {
@@ -93,8 +92,6 @@ export function CommandPallette() {
             </>
           ) : (
             <CommandGroup heading="Search">
-              {isLoading && <CommandItem disabled>Loading…</CommandItem>}
-
               {data && data.length === 0 ? (
                 <CommandEmpty>No results found.</CommandEmpty>
               ) : (
@@ -103,6 +100,7 @@ export function CommandPallette() {
                     <CommandItem
                       key={item.id}
                       onSelect={() => handleSelect(`/items/${item.id}`)}
+                      value={item.id}
                     >
                       <span className="truncate">{item.title}</span>
                     </CommandItem>
