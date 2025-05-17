@@ -75,8 +75,12 @@ export const UpdateItemForm = ({
               </FormItem>
             )}
           />
-          <Button type="submit" className="cursor-pointer">
-            Update
+          <Button
+            type="submit"
+            className="cursor-pointer"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Updating..." : "Update"}
           </Button>
         </div>
         <FormField
@@ -88,6 +92,7 @@ export const UpdateItemForm = ({
                 <MarkdownEditor
                   value={field.value ?? ""}
                   onChange={field.onChange}
+                  onSave={form.handleSubmit(onSubmit)}
                 />
               </FormControl>
               <FormMessage />

@@ -83,7 +83,8 @@ export function CommandPallette() {
                 {data?.map((item: Item) => (
                   <CommandItem
                     key={item.id}
-                    onSelect={() => handleSelect(`/items/${item.id}`)}
+                    onSelect={() => handleSelect(`/items/${item.id}/edit`)}
+                    value={item.id}
                   >
                     <span>{item.title}</span>
                   </CommandItem>
@@ -99,7 +100,7 @@ export function CommandPallette() {
                   {data?.map((item: Item) => (
                     <CommandItem
                       key={item.id}
-                      onSelect={() => handleSelect(`/items/${item.id}`)}
+                      onSelect={() => handleSelect(`/items/${item.id}/edit`)}
                       value={item.id}
                     >
                       <span className="truncate">{item.title}</span>

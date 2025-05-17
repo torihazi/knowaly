@@ -64,8 +64,12 @@ export const CreateItemForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit" className="cursor-pointer">
-            Create
+          <Button
+            type="submit"
+            className="cursor-pointer"
+            disabled={form.formState.isSubmitting}
+          >
+            {form.formState.isSubmitting ? "Creating..." : "Create"}
           </Button>
         </div>
         <FormField
@@ -77,6 +81,7 @@ export const CreateItemForm = () => {
                 <MarkdownEditor
                   value={field.value ?? ""}
                   onChange={field.onChange}
+                  onSave={form.handleSubmit(onSubmit)}
                 />
               </FormControl>
               <FormMessage />
