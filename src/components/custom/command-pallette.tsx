@@ -16,12 +16,13 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { useSearchItems } from "@/features/items/hooks/swr";
+import { Item } from "@/lib/items/types";
 
 export function CommandPallette() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const { data, isLoading, error } = useSearchItems({
+  const { data, isLoading } = useSearchItems({
     open,
     query,
   });
@@ -38,10 +39,13 @@ export function CommandPallette() {
     router.push("/items/new");
   });
 
-  const handleSelect = useCallback((path: string) => {
-    setOpen(false);
-    router.push(path);
-  }, []);
+  const handleSelect = useCallback(
+    (path: string) => {
+      setOpen(false);
+      router.push(path);
+    },
+    [router]
+  );
 
   return (
     <>
@@ -74,7 +78,7 @@ export function CommandPallette() {
 
               <CommandSeparator />
               <CommandGroup heading="Items">
-                {data?.map((item: any) => (
+                {data?.map((item: Item) => (
                   <CommandItem
                     key={item.id}
                     onSelect={() => handleSelect(`/items/${item.id}`)}
@@ -93,7 +97,7 @@ export function CommandPallette() {
               <CommandEmpty>No results found.</CommandEmpty>
             ) : (
               <>
-                {data?.map((item: any) => (
+                {data?.map((item: Item) => (
                   <CommandItem
                     key={item.id}
                     onSelect={() => handleSelect(`/items/${item.id}`)}

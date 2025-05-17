@@ -1,6 +1,8 @@
 import useSWR, { SWRConfiguration } from "swr";
 
-const fetcher = (url: string): Promise<any> =>
+import { Item } from "@/lib/items/types";
+
+const itemsFetcher = (url: string): Promise<Item[]> =>
   fetch(url).then((res) => res.json());
 
 export const useSearchItems = ({
@@ -12,9 +14,9 @@ export const useSearchItems = ({
   query: string;
   config?: SWRConfiguration;
 }) => {
-  const { data, isLoading, error } = useSWR(
+  const { data, isLoading, error } = useSWR<Item[]>(
     open ? `/api/items/search?q=${encodeURIComponent(query)}&limit=5` : null,
-    fetcher,
+    itemsFetcher,
     config
   );
 
