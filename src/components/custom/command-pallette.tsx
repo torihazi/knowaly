@@ -25,6 +25,9 @@ export function CommandPallette() {
   const { data, isLoading } = useSearchItems({
     open,
     query,
+    config: {
+      keepPreviousData: true,
+    },
   });
 
   useHotkeys(["meta+h", "ctrl+h"], () => {
@@ -56,7 +59,7 @@ export function CommandPallette() {
           onValueChange={setQuery}
         />
         <CommandList>
-          {query === "" && (
+          {query === "" ? (
             <>
               <CommandGroup heading="Suggestions">
                 <CommandItem onSelect={() => handleSelect("/home")}>
@@ -88,26 +91,26 @@ export function CommandPallette() {
                 ))}
               </CommandGroup>
             </>
+          ) : (
+            <CommandGroup heading="Search">
+              {isLoading && <CommandItem disabled>Loading…</CommandItem>}
+
+              {data && data.length === 0 ? (
+                <CommandEmpty>No results found.</CommandEmpty>
+              ) : (
+                <>
+                  {data?.map((item: Item) => (
+                    <CommandItem
+                      key={item.id}
+                      onSelect={() => handleSelect(`/items/${item.id}`)}
+                    >
+                      <span className="truncate">{item.title}</span>
+                    </CommandItem>
+                  ))}
+                </>
+              )}
+            </CommandGroup>
           )}
-
-          <CommandGroup heading="Search">
-            {isLoading && <CommandItem disabled>Loading…</CommandItem>}
-
-            {data && data.length === 0 ? (
-              <CommandEmpty>No results found.</CommandEmpty>
-            ) : (
-              <>
-                {data?.map((item: Item) => (
-                  <CommandItem
-                    key={item.id}
-                    onSelect={() => handleSelect(`/items/${item.id}`)}
-                  >
-                    <span className="truncate">{item.title}</span>
-                  </CommandItem>
-                ))}
-              </>
-            )}
-          </CommandGroup>
         </CommandList>
       </CommandDialog>
     </>
