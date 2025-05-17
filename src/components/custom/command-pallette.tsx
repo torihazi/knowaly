@@ -15,9 +15,16 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { useSearchItems } from "@/features/items/hooks/swr";
+
 export function CommandPallette() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const { data, isLoading, error } = useSearchItems({
+    open,
+    query,
+  });
 
   useHotkeys(["meta+h", "ctrl+h"], () => {
     router.push("/home");
@@ -38,44 +45,64 @@ export function CommandPallette() {
 
   return (
     <>
-      <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+      <CommandDialog open={open} onOpenChange={setOpen} shouldFilter={false}>
+        <CommandInput
+          placeholder="Type a command or search..."
+          value={query}
+          onValueChange={setQuery}
+        />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Suggestions">
-            <CommandItem onSelect={() => handleSelect("/home")}>
-              <Home />
-              <span>Home</span>
-              <CommandShortcut>⌘H</CommandShortcut>
-            </CommandItem>
-            <CommandItem onSelect={() => handleSelect("/items/new")}>
-              <Plus />
-              <span>New Item</span>
-              <CommandShortcut>⌘+ctrl+N</CommandShortcut>
-            </CommandItem>
-            <CommandItem onSelect={() => handleSelect("/profile")}>
-              <User />
-              <span>Profile</span>
-              <CommandShortcut>⌘+ctrl+P</CommandShortcut>
-            </CommandItem>
-          </CommandGroup>
-          <CommandSeparator />
+          {query === "" && (
+            <>
+              <CommandGroup heading="Suggestions">
+                <CommandItem onSelect={() => handleSelect("/home")}>
+                  <Home />
+                  <span>Home</span>
+                  <CommandShortcut>⌘H</CommandShortcut>
+                </CommandItem>
+                <CommandItem onSelect={() => handleSelect("/items/new")}>
+                  <Plus />
+                  <span>New Item</span>
+                  <CommandShortcut>⌘+ctrl+N</CommandShortcut>
+                </CommandItem>
+                <CommandItem onSelect={() => handleSelect("/profile")}>
+                  <User />
+                  <span>Profile</span>
+                  <CommandShortcut>⌘+ctrl+P</CommandShortcut>
+                </CommandItem>
+              </CommandGroup>
+
+              <CommandSeparator />
+              <CommandGroup heading="Items">
+                {data?.map((item: any) => (
+                  <CommandItem
+                    key={item.id}
+                    onSelect={() => handleSelect(`/items/${item.id}`)}
+                  >
+                    <span>{item.title}</span>
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </>
+          )}
+
           <CommandGroup heading="Search">
-            {/* <CommandItem>
-              <Search />
-              <span>Search</span>
-              <CommandShortcut>⌘+ctrl+S</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <CreditCard />
-              <span>Billing</span>
-              <CommandShortcut>⌘B</CommandShortcut>
-            </CommandItem>
-            <CommandItem>
-              <Settings />
-              <span>Settings</span>
-              <CommandShortcut>⌘S</CommandShortcut>
-            </CommandItem> */}
+            {isLoading && <CommandItem disabled>Loading…</CommandItem>}
+
+            {data && data.length === 0 ? (
+              <CommandEmpty>No results found.</CommandEmpty>
+            ) : (
+              <>
+                {data?.map((item: any) => (
+                  <CommandItem
+                    key={item.id}
+                    onSelect={() => handleSelect(`/items/${item.id}`)}
+                  >
+                    <span className="truncate">{item.title}</span>
+                  </CommandItem>
+                ))}
+              </>
+            )}
           </CommandGroup>
         </CommandList>
       </CommandDialog>
