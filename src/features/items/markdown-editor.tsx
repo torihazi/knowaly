@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo } from "react";
 import dynamic from "next/dynamic";
+import { useMemo } from "react";
 import "easymde/dist/easymde.min.css";
-import { useSidebar } from "@/components/ui/sidebar";
 import { SimpleMDEReactProps } from "react-simplemde-editor";
+
+import { useSidebar } from "@/components/ui/sidebar";
+
 import { ALLOWED_ACTIONS } from "../editor/options";
 
 const SimpleMDE = dynamic(() => import("react-simplemde-editor"), {
