@@ -16,7 +16,7 @@ export default async function EditItemPage({
   }
 
   return (
-    <div className="flex flex-col items-start mt-6">
+    <div className="flex flex-col items-start h-full">
       <UpdateItemForm
         itemId={item.id}
         initialTitle={item.title}
