@@ -16,8 +16,8 @@ import {
   CommandShortcut,
 } from "@/components/ui/command";
 import { useSearchItems } from "@/features/items/hooks/swr";
-import { Item } from "@/lib/items/types";
 import useDebounce from "@/hooks/use-debounce";
+import { Item } from "@/lib/items/types";
 
 export function CommandPallette() {
   const router = useRouter();
